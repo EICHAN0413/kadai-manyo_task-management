@@ -1,24 +1,12 @@
-# README
+ #ActiveRecord::Schema.define(version: 2021_08_17_022353) do -->
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ # enable_extension "plpgsql"
 
-Things you may want to cover:
+  #create_table "tasks", force: :cascade do |t|
+    #t.string "title", null: false
+    #t.text "content"
+    #t.datetime "created_at", null: false
+    #t.datetime "updated_at", null: false
+  #end
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+#end -->
