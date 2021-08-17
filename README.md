@@ -1,6 +1,6 @@
  #ActiveRecord::Schema.define(version: 2021_08_17_022353) do -->
 
- # enable_extension "plpgsql"
+ #enable_extension "plpgsql"
 
   #create_table "tasks", force: :cascade do |t|
   #t.string "title", null: false
