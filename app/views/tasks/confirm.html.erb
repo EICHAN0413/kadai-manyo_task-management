@@ -2,8 +2,10 @@
 <%= form_with(model: @task, url: tasks_path, local: true) do |form| %>
   <%= form.hidden_field :title %>
   <%= form.hidden_field :content %>
+  <%= form.hidden_field :end_date %>
   <p><%= @task.title %></p>
   <p><%= @task.content %></p>
+  <p><%= @task.end_date %></p>
   <%= form.submit  "登録する" %>
   <%= form.submit  "戻る", name: 'back' %>
 <% end %>

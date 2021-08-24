@@ -12,5 +12,10 @@
   <%= @task.content %>
 </p>
 
+<p>
+  <strong>終了期限</strong>
+  <%= @task.end_date %>
+</p>
+
 <%= link_to '編集', edit_task_path(@task) %>
 <%= link_to '戻る', tasks_path %>

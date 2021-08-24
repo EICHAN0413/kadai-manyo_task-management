@@ -6,11 +6,13 @@
 <table>
 <th>タイトル</th>
 <th>内容</th>
+<th>終了期限</th>
 <% @tasks.each do |task| %>
 <tbody>
 <tr class="task_row"> 
   <td><%= task.title %></td>
   <td><%= task.content %></td>
+  <td><%= task.end_date %></td>
   <td><%= link_to '詳細', task_path(task.id) %></td>
   <td><%= link_to '編集', edit_task_path(task) %></td>
   <td><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
@@ -18,6 +20,7 @@
 </tbody>
 <% end %>
 </table>
+<%= link_to "終了期限でソートする",tasks_path(sort_expired: "true") %>
 <br>
   
 <footer>
