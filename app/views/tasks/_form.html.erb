@@ -1,7 +1,11 @@
 <%= form_with(model: task, local: true, url: choose_new_or_edit ) do |form| %>
 <% if task.errors.any? %>
 <div id ="error_explanation">
+<<<<<<< HEAD
   <h2><%= @task.errors.count %>件のエラーがあります</h2>
+=======
+  <h2><% pluralize(task.errors.count, "error") %>エラーが発生しました</h2>
+>>>>>>> f40fcb2003bcc65bc2dc99371923b0967e8c1ba1
   
   <ul>
   <% task.errors.full_messages.each do |msg| %>
@@ -11,18 +15,18 @@
 </div>
 <% end %>
 
-<div class = "field">
+<div class = "task_row">
   <%= form.label :title %>
-  <%= form.text_area :title %>
+  <%= form.text_field :title %>
 </div>
 
-<div class="field">
+<div class="task_row">
   <%= form.label :content %>
-  <%= form.text_area :content %>
+  <%= form.text_field :content %>
 </div>
 
 <div class="action">
-  <%= form.submit %>
+  <%= form.submit "完了" %>
 </div>
 <% end %>
 
