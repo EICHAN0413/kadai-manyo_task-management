@@ -22,9 +22,16 @@ describe 'タスク管理機能', type: :system do
         context 'タスクが作成日時の降順に並んでいる場合' do
             it '新しいタスクが一番上に表示される' do  
                 task_list = all(".task_row") 
-                
                 expect(task_list[0]).to have_content 'task2' 
-                
+            end
+        end
+
+        context 'タイトルであいまい検索をした場合' do
+            it "検索キーワードを含むタスクで絞り込まれる" do
+                 fill_in "title", with: 'タスク1'
+                 click_on 'search'
+                 sleep 10
+                 expect(page).to have_content 'タスク1'
             end
         end
     end

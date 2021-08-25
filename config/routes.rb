@@ -4,6 +4,7 @@ Rails.application.routes.draw do
  
   resources :tasks do 
     collection do
+      get :search
       post :confirm
     end
   end
