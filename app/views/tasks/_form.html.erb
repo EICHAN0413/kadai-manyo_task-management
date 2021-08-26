@@ -1,15 +1,20 @@
-<%= form_with(model: task, local: true, url: choose_new_or_edit ) do |form| %>
-<% if task.errors.any? %>
-<div id ="error_explanation">
-  <h2><%= @task.errors.count %>件のエラーがあります</h2>
+<body>
 
-  <ul>
-  <% task.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
+<%= form_with(model: task, local: true, url: choose_new_or_edit ) do |form| %>
+<div class="information_form">
+  <% if task.errors.any? %>
+  <div id ="error_explanation">
+    <h3><%= @task.errors.count %>件のエラーがあります</h3>
+
+    <ul>
+    <% task.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
   <% end %>
-  </ul>
 </div>
-<% end %>
+
 
 <div class = "field">
   <%= form.label :title %>
@@ -39,11 +44,17 @@
 
 
 <div class="action">
-  <%= form.submit "完了" %>
-</div>
+  <ul> 
+    <li><%= form.submit "完了" %></li>
+    <li><%= link_to '一覧に戻る', tasks_path %></li>
+  </ul>
+ </div>
+
+
 <% end %>
 
 
 <footer>
-  <%= link_to '一覧に戻る', tasks_path %>
 </footer>
+
+</body>

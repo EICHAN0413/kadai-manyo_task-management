@@ -1,0 +1,185 @@
+//
+// This is a manifest file that'll be compiled into application.css, which will include all the files
+// listed below.
+//
+// Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+// or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+//
+// You're free to add application-wide styles to this file and they'll appear at the bottom of the
+// compiled file so the styles you add here take precedence over styles defined in any styles
+// defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+// file per style scope.
+//
+//= require_self
+//
+
+@import "bootstrap-sprockets";
+
+/*!
+ * Bootstrap v3.3.5 (http://getbootstrap.com)
+ * Copyright 2011-2015 Twitter, Inc.
+ * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
+ */
+
+// Core variables and mixins
+@import "variables";
+@import "bootstrap/mixins";
+
+// Reset and dependencies
+@import "bootstrap/normalize";
+@import "bootstrap/print";
+// @import "bootstrap/glyphicons";
+
+// Core CSS
+@import "bootstrap/scaffolding";
+@import "bootstrap/type";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+@import "bootstrap/tables";
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+
+// Components
+@import "bootstrap/component-animations";
+@import "bootstrap/dropdowns";
+@import "bootstrap/button-groups";
+@import "bootstrap/input-groups";
+@import "bootstrap/navs";
+@import "bootstrap/navbar";
+@import "bootstrap/breadcrumbs";
+@import "bootstrap/pagination";
+@import "bootstrap/pager";
+@import "bootstrap/labels";
+@import "bootstrap/badges";
+@import "bootstrap/jumbotron";
+@import "bootstrap/thumbnails";
+@import "bootstrap/alerts";
+@import "bootstrap/progress-bars";
+@import "bootstrap/media";
+@import "bootstrap/list-group";
+@import "bootstrap/panels";
+@import "bootstrap/responsive-embed";
+@import "bootstrap/wells";
+@import "bootstrap/close";
+
+// Components w/ JavaScript
+// @import "bootstrap/modals";
+// @import "bootstrap/tooltip";
+// @import "bootstrap/popovers";
+// @import "bootstrap/carousel";
+
+// Utility classes
+@import "bootstrap/utilities";
+@import "bootstrap/responsive-utilities";
+
+footer {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    background-color: antiquewhite;
+}
+
+.pagination_form {
+    padding: 20px;
+    height: 20px;
+    text-align: center;
+}
+
+header {
+    width: 100%;
+    height: 120px;
+    background-color: antiquewhite;
+}
+.header_form {
+    width: 100%;
+    height: 100px;
+    padding: 30px;
+    text-align: center;
+}
+
+
+.sort_form {
+    width: 100%;
+    height: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.sort_form ul {
+    display: flex;
+    justify-content: center;
+}
+.sort_form li {
+    display: block;
+    float: left;
+    list-style: none;
+    padding: 10px;
+}
+
+main {
+    width: 100%;
+    height: 700px;
+}
+
+.main_form h2 {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+}
+
+body {
+    width: 100%;
+    height: 800px;
+}
+
+.error_explanation {
+    width: 100%;
+    height: 100px;
+}
+
+.field {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    padding: 50px;
+    font-size: 20px;
+}
+
+.action {
+    width: 100%;
+    height: 70px;
+    text-align: center;
+    padding: 20px;
+}
+
+.action ul {
+    display: flex;
+    justify-content: center;
+}
+
+.action li {
+    display: block;
+    list-style: none;
+    padding: 5px;
+
+}
+
+.new_title {
+    width: 100%;
+    height: 50px;
+    text-align: center;
+    padding: 20px;
+}
+
+.information_form {
+    width: 100%;
+    height: 150px;
+    text-align: center;
+    padding: 20px;
+    list-style: none;
+    font-size: 6px;
+}
+
+li {
+    list-style: none;
+}
