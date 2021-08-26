@@ -1,36 +1,60 @@
-<%= form_with(model: task, local: true, url: choose_new_or_edit ) do |form| %>
-<% if task.errors.any? %>
-<div id ="error_explanation">
-<<<<<<< HEAD
-  <h2><%= @task.errors.count %>件のエラーがあります</h2>
-=======
-  <h2><% pluralize(task.errors.count, "error") %>エラーが発生しました</h2>
->>>>>>> f40fcb2003bcc65bc2dc99371923b0967e8c1ba1
-  
-  <ul>
-  <% task.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-  <% end %>
-  </ul>
-</div>
-<% end %>
+<body>
 
-<div class = "task_row">
+<%= form_with(model: task, local: true, url: choose_new_or_edit ) do |form| %>
+<div class="information_form">
+  <% if task.errors.any? %>
+  <div id ="error_explanation">
+    <h3><%= @task.errors.count %>件のエラーがあります</h3>
+
+    <ul>
+    <% task.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>
+
+
+<div class = "field">
   <%= form.label :title %>
   <%= form.text_field :title %>
 </div>
 
-<div class="task_row">
+<div class="field">
   <%= form.label :content %>
   <%= form.text_field :content %>
 </div>
 
-<div class="action">
-  <%= form.submit "完了" %>
+<div class="field">
+  <%= form.label :end_date, '終了期限' %>
+  <%= form.datetime_select :end_date %>
 </div>
+
+<div class="field">
+  <%= form.label :priority, '優先順位' %>
+  <%= form.select :priority, Task.priorities.keys,  include_blank: '選択してください' %>
+
+</div>
+
+<div class="field">
+  <%= form.label :status, 'ステータス' %>
+  <%= form.select :status, Task.statuses.keys,  include_blank: '選択してください' %>
+</div>
+
+
+<div class="action">
+  <ul> 
+    <li><%= form.submit "完了" %></li>
+    <li><%= link_to '一覧に戻る', tasks_path %></li>
+  </ul>
+ </div>
+
+
 <% end %>
 
 
 <footer>
-  <%= link_to '一覧に戻る', tasks_path %>
 </footer>
+
+</body>

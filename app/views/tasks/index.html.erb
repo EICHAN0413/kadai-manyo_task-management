@@ -1,25 +1,67 @@
-<p id="notice"><%= notice %></p>
+<body>
+
+<header>
+<div class="header_form">
+<%= form_with url: tasks_path, method: :get, local: true do |f| %>
+  <%= f.label :タスク名 %>
+  <%= f.text_field :title %>
+  <%= f.label :ステータス %>
+  <%= f.select :status, Task.statuses.keys, include_blank: '選択してください' %>
+  <%= f.submit :search　%>
+<% end %>
+
+<div class="sort_form">
+<ul class="link_form">
+  <li><%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %></li>
+  <li><%= link_to "優先順位でソートする", tasks_path(sort_priority: "true") %></li>
+  <li><%= link_to "一覧に戻る", tasks_path %></li>
+  <li><%= link_to 'タスク追加', new_task_path %></li>
+</ul>
+</div>
 
 
-<%= t('view.sample') %>
-<h1>タスク一覧</h1>
-<table>
-<th>タイトル</th>
-<th>内容</th>
-<% @tasks.each do |task| %>
-<tbody>
+</div>
+</header>
+
+<main>
+<div class="main_form">
+<h2>タスク一覧</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>タスク名</th>
+      <th>内容</th>
+      <th>終了期限</th>
+      <th>優先順位</th>
+      <th>ステータス</th>
+    </tr>
+  </thead> 
+  <% @tasks.each do |task| %>
+    <tbody>
 <tr class="task_row"> 
   <td><%= task.title %></td>
   <td><%= task.content %></td>
-  <td><%= link_to '詳細', task_path(task.id) %></td>
-  <td><%= link_to '編集', edit_task_path(task) %></td>
-  <td><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
+  <td><%= task.end_date %></td>
+  <td><%= task.priority %></td>
+  <td><%= task.status %></td>
+
+  <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+    <td><button type="button" class="btn btn-secondary"><%= link_to '詳細', task_path(task.id) %></button></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '編集', edit_task_path(task) %></button></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除しますか？' } %></button></td>
+  </div>
 </tr>
 </tbody>
 <% end %>
 </table>
 <br>
+</div>
+</main>
   
 <footer>
-  <%= link_to 'タスク追加', new_task_path %>
+<div class="paginate_form">
+ <%= paginate(@tasks) %>
+ </div>
 </footer>
+
+</body>
