@@ -2,25 +2,8 @@
 
 <header>
 <div class="header_form">
-<%= form_with url: tasks_path, method: :get, local: true do |f| %>
-  <%= f.label :タスク名 %>
-  <%= f.text_field :title %>
-  <%= f.label :ステータス %>
-  <%= f.select :status, Task.statuses.keys, include_blank: '選択してください' %>
-  <%= f.submit :search　%>
-<% end %>
-<%= flash[:notice] %>
-
-<div class="sort_form">
-<ul class="link_form">
-  <li><%= link_to "終了期限でソートする", tasks_path(sort_expired: "true") %></li>
-  <li><%= link_to "優先順位でソートする", tasks_path(sort_priority: "true") %></li>
-  <li><%= link_to "一覧に戻る", tasks_path %></li>
-  <li><%= link_to 'タスク追加', new_task_path %></li>
-</ul>
-</div>
-
-
+  <h3><%= @user.name %>のページ(ID:<%= @user.id %>)</h3>
+  <p>メールアドレス: <%= @user.email %> </p>
 </div>
 </header>
 
@@ -37,7 +20,7 @@
       <th>ステータス</th>
     </tr>
   </thead> 
-  <% @tasks.each do |task| %>
+  <% @user.tasks.each do |task| %>
     <tbody>
   <tr class="task_row"> 
     <td><%= task.title %></td>
@@ -59,10 +42,10 @@
 </div>
 </main>
   
-<footer>
+<%# <footer>
 <div class="paginate_form">
- <%= paginate(@tasks) %>
- </div>
-</footer>
+ <%= paginate(@user.tasks) %>
+ <%# </div>
+</footer> %>
 
 </body>

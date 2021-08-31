@@ -2,23 +2,24 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[ show edit update destroy ]
  
   def index
+    
+    
     if params[:sort_expired]  
       @tasks = Task.all.order(end_date: "DESC").page(params[:page]).per(10)
     elsif params[:sort_priority]  
       @tasks = Task.all.order(priority: "ASC").page(params[:page]).per(10)
-    elsif
-      @tasks = Task.all.order(created_at: "DESC").page(params[:page]).per(10)
+    else
+      @tasks = current_user.tasks.order(created_at: "DESC").page(params[:page]).per(10)
     end
 
   
-      if params[:title].present? && params[:status].present?
-        @tasks = Task.search_title(params[:title]).search_status(params[:status]).page(params[:page]).per(10)
-      elsif params[:title].present?
-        @tasks = Task.search_title(params[:title]).page(params[:page]).per(10)
-      elsif params[:status].present?
-        @tasks = Task.search_status(params[:status]).page(params[:page]).per(10)
-      end
-  
+    if params[:title].present? && params[:status].present?
+      @tasks = Task.search_title(params[:title]).search_status(params[:status]).page(params[:page]).per(10)
+    elsif params[:title].present?     
+      @tasks = Task.search_title(params[:title]).page(params[:page]).per(10)
+    elsif params[:status].present?
+      @tasks = Task.search_status(params[:status]).page(params[:page]).per(10)
+    end
   end
 
 
@@ -30,7 +31,7 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     if params[:back]
       render :new
     elsif @task.save
@@ -57,7 +58,7 @@ class TasksController < ApplicationController
   end
 
   def confirm
-    @task = Task.new(task_params)
+    @task = current_user.tasks.build(task_params)
     render :new if @task.invalid?
   end
 

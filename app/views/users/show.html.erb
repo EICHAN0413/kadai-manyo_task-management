@@ -1,0 +1,8 @@
+<h1><%= @user.name %>のページ</h1>
+<p>メールアドレス: <%= @user.email %></p>
+
+<% if @user.name == '管理者'%>
+  <%= link_to '管理画面', admin_users_path %>
+<% else %>
+ <%= link_to "一覧に戻る", tasks_path %> 
+<% end %>

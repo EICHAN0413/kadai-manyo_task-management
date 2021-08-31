@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
 
+  namespace :admin do
+    resources :users
+  end
+
   root 'tasks#index'
  
   resources :tasks do 
@@ -8,4 +12,8 @@ Rails.application.routes.draw do
       post :confirm
     end
   end
+
+  resources :users, only: [:new, :create, :show, :destroy]
+  resources :sessions, only: [:new, :create, :destroy]
+
 end
