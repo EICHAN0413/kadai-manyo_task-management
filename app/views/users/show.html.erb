@@ -1,8 +1,51 @@
+<body>
 <h1><%= @user.name %>のページ</h1>
 <p>メールアドレス: <%= @user.email %></p>
+
 
 <% if @user.name == '管理者'%>
   <%= link_to '管理画面', admin_users_path %>
 <% else %>
  <%= link_to "一覧に戻る", tasks_path %> 
 <% end %>
+
+
+<main>
+<div class="main_form">
+<h2>タスク一覧</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th>タスク名</th>
+      <th>ユーザ名</th>
+      <th>内容</th>
+      <th>終了期限</th>
+      <th>優先順位</th>
+      <th>ステータス</th>
+    </tr>
+  </thead> 
+  <% @user.tasks.each do |task| %>
+    <tbody>
+  <tr class="task_row"> 
+    <td><%= task.title %></td>
+    <td><%= @user.name %></td>
+    <td><%= task.content %></td>
+    <td><%= task.end_date %></td>
+    <td><%= task.priority %></td>
+    <td><%= task.status %></td>
+
+  <div class="btn-group btn-group-lg" role="group" aria-label="Basic example">
+    <td><button type="button" class="btn btn-secondary"><%= link_to '詳細', task_path(task.id) %></button></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '編集', edit_task_path(task) %></button></td>
+    <td><button type="button" class="btn btn-secondary"><%= link_to '削除', task, method: :delete, data: { confirm: '本当に削除しますか？' } %></button></td>
+  </div>
+</tr>
+</tbody>
+<% end %>
+</table>
+<br>
+</div>
+</main>
+</body>
+
+

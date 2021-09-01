@@ -31,6 +31,7 @@
   <thead>
     <tr>
       <th>タスク名</th>
+      <th>ユーザ名</th>
       <th>内容</th>
       <th>終了期限</th>
       <th>優先順位</th>
@@ -41,6 +42,7 @@
     <tbody>
   <tr class="task_row"> 
     <td><%= task.title %></td>
+    <td><%= task.user.name %></td>
     <td><%= task.content %></td>
     <td><%= task.end_date %></td>
     <td><%= task.priority %></td>
