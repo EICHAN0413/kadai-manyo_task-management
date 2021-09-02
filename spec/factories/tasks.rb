@@ -6,6 +6,7 @@ FactoryBot.define do
       priority { '高' }
       status { '着手中' }
       association :user
+
     end
 
     factory :second_task, class: Task do
@@ -15,6 +16,7 @@ FactoryBot.define do
       priority { '中' }
       status { '未着手' }
       association :user
+
     end
 
     factory :third_task, class: Task do
@@ -24,5 +26,7 @@ FactoryBot.define do
       priority { '低' }
       status { '完了' }
       association :user
+
     end
-  end
+
+end
