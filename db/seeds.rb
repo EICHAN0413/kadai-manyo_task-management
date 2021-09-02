@@ -13,3 +13,44 @@ User.create!(
     password_confirmation: "11111111",
     admin: true
 )
+
+Label.create!(
+    name: '仕事'
+)
+
+Label.create!(
+    name: '趣味'
+)
+
+Label.create!(
+    name: 'フロントエンド'
+)
+
+Label.create!(
+    name: 'バックエンド'
+)
+
+Label.create!(
+    name: 'HTML'
+)
+
+Label.create!(
+    name: 'CSS'
+)
+
+Label.create!(
+    name: 'Ruby'
+)
+
+Label.create!(
+    name: '学習'
+)
+
+Label.create!(
+    name: '基礎'
+)
+
+Label.create!(
+    name: '急ぎ要件'
+)
+

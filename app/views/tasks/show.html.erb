@@ -44,6 +44,15 @@
   <strong>ステータス</strong>
   <%= @task.status %>
 </p>
+
+<div class = "field">
+<p>
+  <strong>ラベル名</strong>
+  <% @task.labels.each do |label| %>
+    <%= label.name %>
+  <% end %>
+</p>
+
 </div>
 
 

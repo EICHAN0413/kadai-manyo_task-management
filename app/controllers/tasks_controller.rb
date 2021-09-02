@@ -13,12 +13,20 @@ class TasksController < ApplicationController
     end
 
   
-    if params[:title].present? && params[:status].present?
+    if params[:title].present? && params[:status].present? && params[:label_id].present? 
+      @tasks = Task.search_title(params[:title]).search_status(params[:status]).joins(:labels).where(labels: { id: params[:label_id] }).page(params[:page]).per(10)
+    elsif params[:title].present? && params[:status].present?
       @tasks = Task.search_title(params[:title]).search_status(params[:status]).page(params[:page]).per(10)
+    elsif params[:title].present? && params[:label_id].present? 
+      @tasks = Task.search_title(params[:title]).joins(:labels).where(labels: { id: params[:label_id] }).page(params[:page]).per(10)
+    elsif params[:status].present? && params[:label_id].present? 
+      @tasks = Task.search_status(params[:status]).joins(:labels).where(labels: { id: params[:label_id] }).page(params[:page]).per(10)
     elsif params[:title].present?     
       @tasks = Task.search_title(params[:title]).page(params[:page]).per(10)
     elsif params[:status].present?
       @tasks = Task.search_status(params[:status]).page(params[:page]).per(10)
+    elsif params[:label_id].present?
+      @tasks = Task.joins(:labels).where(labels: { id: params[:label_id] }).page(params[:page]).per(10)
     end
   end
 
@@ -74,7 +82,8 @@ class TasksController < ApplicationController
       :content, 
       :end_date, 
       :priority,
-      :status
+      :status,
+      { label_ids: []}
     )
   end
 end
