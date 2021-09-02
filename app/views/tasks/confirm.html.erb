@@ -14,6 +14,9 @@
   <%= form.hidden_field :end_date %>
   <%= form.hidden_field :priority %>
   <%= form.hidden_field :status %>
+  <% @task.labels.each do |label| %>
+    <%= form.hidden_field :label_ids, multiple: true, value: label.id  %>
+  <% end %>
 
   <div class = "field">
     <p>タスク名:<%= @task.title %></p>
@@ -28,7 +31,12 @@
     <p>優先順位:<%= @task.priority %></p>
   </div>
   <div class = "field">
-  <p>ステータス:<%= @task.status %></p>
+    <p>ステータス:<%= @task.status %></p>
+  </div>
+  <div class = "field">
+    <p>ラベル登録:<% @task.labels.each do |label| %>
+      <%= label.name %>
+    <% end %></p>
   </div>
 
   <div class="action">
